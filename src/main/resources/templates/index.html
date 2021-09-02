@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <title>Inicio</title>
+    <div th:replace="layout/template :: head" />
+</head>
+<body>
+    <div class="container my-5" style="width: 30vw">
+        <header th:replace="layout/template :: header"></header>
+        <div class="card border border-danger p-5">
+            <form method="post" th:action="@{/login}">
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                    Usuario no encontrado
+                </div>
+                <div class="row">
+                    <div class="col-9 offset-3">
+                        <button type="submit" class="btn btn-primary mx-3">Submit</button>
+
+                        <a th:href="@{/register}" class="link-success">Are you not sign up?</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="layout/template :: footer"></footer>
+</body>
+</html>

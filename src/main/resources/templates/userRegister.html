@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+    <head>
+        <title>Inicio</title>
+    <div th:replace="layout/template :: head" />
+</head>
+<body>
+    <div class="container" style="width: 30vw">
+        <header th:replace="layout/template :: header"></header>
+
+        <div class="card border border-danger p-5">
+            <form method="post" th:action="@{/save}" th:object="${newUser}">
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="name" th:field="*{name}">
+                </div>
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Surname</label>
+                    <input type="text" class="form-control" name="surname" th:field="*{surname}">
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" aria-describedby="emailHelp" name="email" th:field="*{email}">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">ID Document</label>
+                    <input type="text" class="form-control" name="surname" th:field="*{documentId}">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" th:field="*{password}">
+                </div>
+                
+                <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                    the email has already been registered
+                </div>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+    <footer th:replace="layout/template :: footer"></footer>
+</body>
+</html>
